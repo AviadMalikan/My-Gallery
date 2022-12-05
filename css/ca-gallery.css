@@ -300,6 +300,7 @@ header.masthead .intro-text .intro-heading {
 #portfolio .portfolio-item .portfolio-link {
     position: relative;
     display: block;
+    height: 70%;
     max-width: 400px;
     margin: 0 auto;
     cursor: pointer;
