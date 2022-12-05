@@ -3,7 +3,7 @@ console.log('Starting up');
 const GITHUB_URL = `https://aviadmalikan.github.io/`
 const gProjects = [
     {
-        
+
         id: "sokoban",
         name: "Sokoban",
         title: "Better push those boxes",
@@ -61,7 +61,7 @@ const gProjects = [
 
 
 $(document).ready(init)
-
+$('.submit-form').click(onContact)
 
 function init() {
     renderPortfolio()
@@ -89,20 +89,13 @@ function renderPortfolio() {
 }
 
 function openModal(projId) {
-    console.log('projId: ', projId)
-
-    console.log('OLA')
+    // console.log('projId: ', projId)
     var proj = gProjects.find(project => project.id === projId)
     var time = new Date(proj.publishedAt)
-    console.log('time: ', time)
 
     var day = time.getDay()
     var month = time.getMonth() + 1
     var year = time.getFullYear()
-
-    console.log('month: ', month)
-
-
 
     var strHTML = `
     <h2>${proj.name}</h2>
@@ -118,7 +111,25 @@ function openModal(projId) {
     <i class="fa fa-times"></i>
     Close Project</button>
     </div>`;
-
-
     $('.modal-body').html(strHTML)
+}
+
+
+function onContact(ev) {
+    ev.preventDefault()
+
+    // var email = $('#email').val()
+    var email = `aviad879@gmail.com`
+    var subject = $('#subject').val()
+    var massage = $('#massage').val()
+
+    var url = `https://mail.google.com/mail/?view=cm&fs=1&
+    to=${email}&su=${subject}&body=${massage}`
+
+    $('#subject').val('')
+    $('#massage').val('')
+    $('#email').val('')
+
+    window.open(url, '_blank')
+
 }
